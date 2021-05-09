@@ -15,7 +15,7 @@ public class TelaRelatorioConsolidado {
     
     public void telaConsol(List<Produto> produtos, Scanner ler, List<Venda> vendas, DateTimeFormatter formataData, DecimalFormat formataDecimal) {
 
-        System.out.println("Informe a data a ser relatada (ENTER para da data de hoje): ");
+        System.out.println("\nInforme a data a ser relatada (ENTER para da data de hoje): ");
         String dataConsolid = ler.nextLine();
         
         if(dataConsolid.isEmpty()){
@@ -42,7 +42,7 @@ public class TelaRelatorioConsolidado {
         String choice = ler.nextLine();
 
         if(choice.isBlank()) {
-             System.out.printf("\n\n%-15.15s\t%-12.12s\t%-20.20s", "Produto","Quantidade", "Valor Total(R$)");
+             System.out.printf("\n\n\n%-15.15s\t%-12.12s\t%-20.20s", "Produto","Quantidade", "Valor Total(R$)");
              System.out.printf("\n%s\n", "--------------------------------------------------");
             
              filtroConsolid(vendas, dataConsolid, formataData, formataDecimal);
