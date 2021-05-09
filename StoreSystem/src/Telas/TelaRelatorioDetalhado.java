@@ -23,7 +23,7 @@ public class TelaRelatorioDetalhado {
         System.out.println("Data inicial [dd/mm/aaaa] (ENTER para a data de hoje): ");
          dataInicial = ler.nextLine();
 
-        if(!dataInicial.matches("^\\d[1-31]{2}-\\d[1-12]{2}-\\d{4}+$") && (!dataInicial.isBlank())) {
+        if(!dataInicial.matches("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\\d{2}+$") && (!dataInicial.isBlank())) {
             System.out.println("\nFormato de data inválido, recomeçando...");
             
         }
@@ -38,7 +38,7 @@ public class TelaRelatorioDetalhado {
              System.out.println("Data final [dd/mm/aaaa] (ENTER para a data de hoje): ");
              dataFinal = ler.nextLine();
 
-             if(!dataFinal.matches("^\\d[1-31]{2}-\\d[1-12]{2}-\\d{4}+$") && (!dataFinal.isBlank())) {
+             if(!dataFinal.matches("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\\d{2}+$") && (!dataFinal.isBlank())) {
                 System.out.println("\nFormato de data inválido, recomeçando...");
                 
             }
@@ -57,15 +57,15 @@ public class TelaRelatorioDetalhado {
 
                  System.out.printf("\n\nPeríodo de Emissão: %s a %s\n", dataInicial, dataFinal);
 
-                 System.out.printf("\n%s", "----------------------------------------------------------------------------------------------------------------------------------");
-                 System.out.printf("\n%-10.10s\t%-15.15s\t%-20.20s\t%-12.12s\t%-15.15s\t%-15.15s\n", "Data", "Código","Produto", "Quantidade", "Valor Unit.(R$)", "Valor Total(R$)");
-                 System.out.printf("%s\n", "----------------------------------------------------------------------------------------------------------------------------------");
+                 System.out.printf("%s\n", "--------------------------------------------------------------------------------------------------");
+                 System.out.printf("\n%s\t%-15.15s\t%-20.20s\t%-12.12s\t%-15.15s\t%-20.20s\n", "Data", "Código","Produto", "Quantidade", "Valor Unit.(R$)", "Valor Total(R$)");
+                 System.out.printf("%s\n", "--------------------------------------------------------------------------------------------------");
                                 
                 filtroVenda(vendas, dataInicial, dataFinal, formataData, formataDecimal);
 
                 DoubleSummaryStatistics statics = vendas.stream()
                 .collect(Collectors.summarizingDouble(p -> (p.getQuant() * p.getProduto().getPreco())));
-                System.out.printf("Valor médio do período: %.2f\n", statics.getAverage());
+                System.out.printf("Valor médio do período: R$ %.2f\n", statics.getAverage());
                                 
     }
 
@@ -77,8 +77,8 @@ public class TelaRelatorioDetalhado {
                 p.getData().plusDays(-1).isBefore(LocalDate.parse(dataFinal, formataData)))
                 .collect(Collectors.toList());
 
-                vendasFilter.forEach(p -> System.out.printf("%-10.10s\t%-15.15s\t%-20.20s\t%-12.12s\t%-15.15s\t%-15.15s\n", formataData.format(p.getData()), p.getProduto().getCodigo(),  p.getProduto().getNome(),  p.getQuant(), formataDecimal.format(p.getProduto().getPreco()), formataDecimal.format(p.getQuant() * p.getProduto().getPreco())));
-                System.out.printf("%s\n", "----------------------------------------------------------------------------------------------------------------------------------");
+                vendasFilter.forEach(p -> System.out.printf("%-10.10s\t%-15.15s\t%-20.20s\t%-12.12s\t%-15.15s\t%-20.20s\n", formataData.format(p.getData()), p.getProduto().getCodigo(),  p.getProduto().getNome(),  p.getQuant(), formataDecimal.format(p.getProduto().getPreco()), formataDecimal.format(p.getQuant() * p.getProduto().getPreco())));
+                System.out.printf("%s\n", "--------------------------------------------------------------------------------------------------");
                                 
         }
 

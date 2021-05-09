@@ -24,6 +24,6 @@ public class TelaProdutos {
         System.out.printf("%s\n", "-------------------------------------------------------------------------");
         System.out.printf("Maior Valor: R$ %.2f\tMenor Valor: R$ %.2f\tValor Médio: R$ %.2f\n", stats.getMax(), stats.getMin(), stats.getAverage());
 
-        //TODO fazer o sysout ENTER - voltar
+        
     }
 }

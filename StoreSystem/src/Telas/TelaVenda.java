@@ -51,7 +51,7 @@ public class TelaVenda {
                 System.out.println("Data [dd/mm/aaaa] (ENTER para a data de hoje): ");
                 String vdata = ler.nextLine();
 
-                if(!vdata.matches("^\\d[1-31]{2}-\\d[1-12]{2}-\\d{4}+$") && (!vdata.isBlank())) {
+                if(!vdata.matches("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\\d{2}+$") && (!vdata.isBlank())) {
                     System.out.println("\nFormato de data inválido, recomeçando....");
                     break;
                 }
@@ -60,7 +60,7 @@ public class TelaVenda {
                     vdata = formataData.format(LocalDateTime.now());
                     System.out.println("Data de Hoje: " + vdata);
                 } else
-                    System.out.println("Data: " + vdata);
+                    System.out.println("\nData: " + vdata);
 
                 System.out.println("\nQuantidade: ");
                 int q = ler.nextInt();
