@@ -17,11 +17,7 @@ public class TelaRelatorioConsolidado {
 
         System.out.println("\nInforme a data a ser relatada (ENTER para da data de hoje): ");
         String dataConsolid = ler.nextLine();
-        
-        if(dataConsolid.isEmpty()){
-            System.out.println("\nNENHUMA VENDA FOI REALIZADA NESTA DATA!\n");
-            
-        }
+
 
         if(!dataConsolid.matches("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\\d{2}+$") && (!dataConsolid.isBlank())) {
             System.out.println("\nFormato de data inválido, recomeçando...");
